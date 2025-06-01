@@ -8,7 +8,7 @@ AOS.init({
 })
 
 const typed = new Typed("#typing",{
-    strings:["طراح تجربه و رابط کاربری", "توسعه‌دهنده وب", "متفکر خلاق"],
+    strings:["متفکر خلاق", "توسعه‌دهنده وب", "بهینه‌ساز عملکرد", "توسعه‌دهنده واکنش‌ گرا"],
     typeSpeed:60,
     backSpeed:30,
     backDelay:1000,
@@ -159,3 +159,21 @@ document.getElementById('post-form').addEventListener('submit', async function(e
       submitButton.textContent = 'Appointment Now';
     }
 });
+
+function updateAOS() {
+  const elements = document.querySelectorAll('[data-aos-mobile]');
+  const isMobile = window.innerWidth < 768;
+
+  elements.forEach(el => {
+    if (isMobile) {
+      el.setAttribute('data-aos', el.getAttribute('data-aos-mobile'));
+    } else {
+      el.setAttribute('data-aos', 'fade-right'); // Revert to default
+    }
+  });
+
+  AOS.refresh();
+}
+
+window.addEventListener('load', updateAOS);
+window.addEventListener('resize', updateAOS);
